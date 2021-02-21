@@ -1,0 +1,57 @@
+<div class="reactive-container">
+  <div>
+    <input type="text" [formControl]="sampleName" />
+  </div>
+
+  <div>
+    Sample Name Value : {{ sampleName.value}}
+  </div>
+  <div>
+    <button (click)="onButtonClick()">Click to set value</button>
+  </div>
+    <div>
+    <button (click)="onButtonUpdate()">Click to Update value</button>
+  </div>
+
+  <div><u>Sample Form Group</u></div>
+  <div class="formgroupcontainer">
+    <form [formGroup]="userInfo" (ngSubmit)="formGroupSubmit()">
+      <div>
+        Name:
+        <input type="text" formControlName="name" />
+        {{userInfo.value.name}}
+      </div>
+      <div>
+        age:
+        <input type="text" formControlName="age" />
+      </div>
+      <div>
+        Designation:
+        <input type="text" formControlName="desig" />
+      </div>
+      <div>
+        Salary:
+        <input type="text" formControlName="salary" />
+      </div>
+      <div  formGroupName="addressGroup">
+        <u>Address</u>      
+        <div>
+          street
+          <input type="text" formControlName="street">
+        </div>
+          <div>
+          Postbox
+          <input type="text" formControlName="postbox">
+        </div>
+          <div>
+          Telephone
+          <input type="text" formControlName="phone">
+        </div>
+      
+      </div>
+      <div>
+        <input type="submit" value="submit" [disabled]="!userInfo.valid" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="reactiveothercontainer">
+  Reactive Other
+  <form [formGroup]="userInfo" (ngSubmit)="formGroupSubmit()">
+    <div>
+      First Name:
+      <input type="text" formControlName="firstName" required />
+    </div>
+    <div>
+      Last Name:
+      <input type="text" formControlName="lastName" />
+    </div>
+
+    <div formGroupName="addressGroup">
+      <u>Address</u>
+      <div>
+        street
+        <input type="text" formControlName="street" required />
+      </div>
+      <div>
+        city
+        <input type="text" formControlName="city" />
+      </div>
+      <div>
+        state
+        <input type="text" formControlName="state" />
+      </div>
+      <div>
+        Zip
+        <input type="text" formControlName="zip" />
+      </div>
+      <!-- <div>{{userInfo.addressGroup.status}}</div> -->
+    </div>
+    <div formArrayName="genders">
+      <button (click)="addGenderCheckbox()">Add Gender Checkbox</button>
+       <div *ngFor="let gender of genders.controls; let i=index">
+    <!-- The repeated alias template -->
+        <label>
+          Gender:
+          <input type="checkbox" [formControlName]="i">
+        </label>
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="submit" [disabled]="!userInfo.valid" />
+    </div>
+    <div>
+      Form validation status: {{userInfo.status}}
+    </div>
+  </form>
+</div>

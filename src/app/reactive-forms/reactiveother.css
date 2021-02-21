@@ -1,0 +1,8 @@
+.reactiveothercontainer{
+  border:1px solid red;
+  padding:5px;
+}
+.reactiveothercontainer div{
+  padding:10px;
+  border:1px solid gray;
+}
